@@ -154,6 +154,8 @@ def periodic_sync():
     """
     Runs every 5 minutes to re-sync tasks for all sponsors in SYNC_SPONSORS.
     """
+    # Notify that the sync job is running
+    print(f"[{datetime.now().isoformat()}] Running periodic sync for sponsors: {list(SYNC_SPONSORS)}")
     for sponsor_id in list(SYNC_SPONSORS):
         tasks = []
         tasks += get_salesforce_tasks(sponsor_id)
